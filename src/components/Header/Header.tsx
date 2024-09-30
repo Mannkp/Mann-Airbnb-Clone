@@ -310,11 +310,15 @@ const Header = () => {
           <ul
             className={`flex flex-row gap-4 items-center justify-between md:justify-end md:absolute md:top-full md:left-auto md:w-max md:right-0 bg-white px-2 md:rounded-s-lg md:py-4 md:px-6`}
           >
-            <li className="px-2 py-3 border-2 rounded-xl">
-              <Link href={"/about"}>About Site</Link>
+            <li className="border-2 rounded-xl flex">
+              <Link href={"/about"} className="px-2 py-3">
+                About Site
+              </Link>
             </li>
-            <li className="px-2 py-3 border-2 rounded-xl">
-              <Link href={"/contact"}>Contact Us</Link>
+            <li className="border-2 rounded-xl flex">
+              <Link href={"/contact"} className="px-2 py-3">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
