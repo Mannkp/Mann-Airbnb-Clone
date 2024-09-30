@@ -1,0 +1,125 @@
+{
+    "logo": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png",
+        "alt": "Airbnb logo",
+        "description": "It's Airbnb! Belong anywhere."
+    },
+    "links": [
+        {
+            "title": "ABOUT",
+            "items": [
+                {
+                    "text": "How Airbnb works",
+                    "url": "#"
+                },
+                {
+                    "text": "Newsroom",
+                    "url": "#"
+                },
+                {
+                    "text": "Investors",
+                    "url": "#"
+                },
+                {
+                    "text": "Airbnb Plus",
+                    "url": "#"
+                }
+            ]
+        },
+        {
+            "title": "COMMUNITY",
+            "items": [
+                {
+                    "text": "GitHub",
+                    "url": "#"
+                },
+                {
+                    "text": "Linkedin",
+                    "url": "https://github.com/Mannkp",
+                    "target": "_blank"
+                },
+                {
+                    "text": "Discord",
+                    "url": "https://www.linkedin.com/in/mannkumar-k-pandya-750b4a20a/",
+                    "target": "_blank"
+                },
+                {
+                    "text": "Facebook",
+                    "url": "#"
+                }
+            ]
+        },
+        {
+            "title": "HOST",
+            "items": [
+                {
+                    "text": "Mannkumar Pandya",
+                    "url": "#"
+                },
+                {
+                    "text": "Next.js",
+                    "url": "#"
+                },
+                {
+                    "text": "Tailwind CSS",
+                    "url": "#"
+                },
+                {
+                    "text": "Typescript",
+                    "url": "#"
+                },
+                {
+                    "text": "Splide.js",
+                    "url": "#"
+                },
+                {
+                    "text": "React-Slick-Slider",
+                    "url": "#"
+                },
+                {
+                    "text": "React-date-Range",
+                    "url": "#"
+                }
+            ]
+        },
+        {
+            "title": "SUPPORT",
+            "items": [
+                {
+                    "text": "Help Center",
+                    "url": "#"
+                },
+                {
+                    "text": "Trust & Safety",
+                    "url": "#"
+                },
+                {
+                    "text": "Contact Now",
+                    "url": "/contact"
+                }
+            ]
+        }
+    ],
+    "social": [
+        {
+            "icon": "facebook",
+            "url": "#",
+            "iconSrc": "https://cdn-icons-png.flaticon.com/512/733/733547.png"
+        },
+        {
+            "icon": "twitter",
+            "url": "#",
+            "iconSrc": "https://cdn-icons-png.flaticon.com/512/733/733579.png"
+        },
+        {
+            "icon": "instagram",
+            "url": "#",
+            "iconSrc": "https://cdn-icons-png.flaticon.com/512/733/733558.png"
+        },
+        {
+            "icon": "linkedin",
+            "url": "#",
+            "iconSrc": "https://cdn-icons-png.flaticon.com/512/733/733561.png"
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+[
+    {
+        "img": "https://images.unsplash.com/photo-1547473078-cbab237054c0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "Stay at this spacious Edwardian House",
+        "description": "1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+        "star": 4.73,
+        "price": "30",
+        "total": "£117 total",
+        "category": [
+            "Cancellation Flexibility",
+            "Parking included",
+            "Wifi Available",
+            "with kitchen",
+            "Economy"
+        ],
+        "long": -0.0022275,
+        "lat": 51.5421655
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "Independant luxury studio apartment",
+        "description": "2 guest · 3 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen",
+        "star": 4.3,
+        "price": "40",
+        "total": "£157 total",
+        "category": [
+            "Cancellation Flexibility",
+            "Wifi Available",
+            "with kitchen"
+        ],
+        "long": -0.095091,
+        "lat": 51.48695
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "London luxury Apartments",
+        "description": "4 guest · 4 bedroom · 4 bed · 2 bathrooms · Free parking · Washing Machine",
+        "star": 3.8,
+        "price": "450",
+        "total": "£2070 total",
+        "category": [
+            "Cancellation Flexibility",
+            "Wifi Available",
+            "Parking included"
+        ],
+        "long": -0.135638,
+        "lat": 51.521916
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "30 mins to Oxford Street, Excel London",
+        "description": "1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+        "star": 4.1,
+        "price": "55",
+        "total": "£320 total",
+        "category": [
+            "Cancellation Flexibility",
+            "Wifi Available",
+            "with kitchen",
+            "Parking included"
+        ],
+        "long": -0.069961,
+        "lat": 51.472618
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1654064550858-c62b971a378a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "Spacious Peaceful Modern Bedroom in London",
+        "description": "3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Free parking · Dry Cleaning",
+        "star": 5,
+        "price": "40",
+        "total": "£450 total",
+        "category": [
+            "Wifi Available",
+            "Parking included"
+        ],
+        "long": -0.08472,
+        "lat": 51.510794
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "Studio Apartment in London",
+        "description": "2 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Washing Machine",
+        "star": 4.23,
+        "price": "65",
+        "total": "£480 total",
+        "category": [
+            "Wifi Available",
+            "Parking included"
+        ],
+        "long": -0.094116,
+        "lat": 51.51401
+    },
+    {
+        "img": "https://images.unsplash.com/photo-1618221639244-c1a8502c0eb9?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "location": "Private room in center of London",
+        "title": "5 Star Luxury Apartment",
+        "description": "3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+        "star": 3.85,
+        "price": "590",
+        "total": "£650 total",
+        "category": [
+            "Wifi Available",
+            "Parking included",
+            "with kitchen",
+            "Cancellation Flexibility"
+        ],
+        "long": -0.109889,
+        "lat": 51.521245
+    }
+]
