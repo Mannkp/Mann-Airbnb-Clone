@@ -27,16 +27,17 @@ function AboutPage() {
         <li>react-hook-form</li>
         <li>tailwind-scrollbar-hide</li>
       </ul>
-      <h5 className="pt-6 text-lg font-mono text-red-400">
-        Packages/Libraries used:
-      </h5>
+      <h5 className="pt-6 text-lg font-mono text-red-400">Hooks used:</h5>
       <ul>
         <li>useState</li>
         <li>useEffect</li>
         <li>useMemo</li>
         <li>useCallback</li>
         <li>useContext</li>
+        <li>useRef</li>
         <li>useForm</li>
+        <li>useRouter</li>
+        <li>useSearchParams</li>
       </ul>
     </div>
   );

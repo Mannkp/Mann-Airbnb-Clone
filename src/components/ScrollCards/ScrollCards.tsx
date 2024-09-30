@@ -78,7 +78,7 @@ function ScrollCards({ data }: { data: Cards_Data[] }) {
           {data?.map((item: Cards_Data, index: number) => {
             return (
               <div className="py-6 px-1 md:pr-3 md:px-0" key={index}>
-                <Link href={"/d"} className="group">
+                <Link href={"#"} className="group">
                   <div className="relative min-w-80 min-h-80">
                     <Image
                       src={item?.img}
