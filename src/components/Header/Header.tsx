@@ -120,7 +120,7 @@ const Header = () => {
   //clear context when leaving search page
   useEffect(() => {
     const handleRouteChange = () => {
-      if (router.pathname !== "/search") {
+      if (!router.pathname.startsWith("/search")) {
         searchContext?.setSearchData({
           location: "",
           range: "",

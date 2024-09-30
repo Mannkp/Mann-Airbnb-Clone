@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { GetStaticPaths } from "next";
 import { FaStar } from "react-icons/fa6";
 import SearchMockData from "../../../data/mock_SearchResult.json";
@@ -24,11 +23,23 @@ type searchResults = searchResult[];
 
 const roomPage = ({ searchResult: data }: { searchResult: searchResult }) => {
   const searchContent = useContext(SearchContext);
+  const [calculatedTotal, setCalculatedTotal] = useState<number | null>(null);
 
-  const CalculatedTotal =
-    ((searchContent?.searchData?.numberOfDays &&
-      searchContent?.searchData?.numberOfDays) ||
-      1) * ((data?.price && parseInt(data?.price)) || 1);
+  useEffect(() => {
+    if (
+      searchContent?.searchData?.numberOfDays &&
+      data?.price &&
+      !isNaN(parseInt(data.price))
+    ) {
+      const total =
+        searchContent.searchData.numberOfDays * parseInt(data.price);
+      setCalculatedTotal(total);
+    } else {
+      setCalculatedTotal(null); // Reset if any value is missing or invalid
+    }
+  }, [searchContent, data]);
+
+  console.log(calculatedTotal, "hi");
 
   return (
     <>
@@ -90,8 +101,8 @@ const roomPage = ({ searchResult: data }: { searchResult: searchResult }) => {
                   £{data?.price || "Price here"}
                 </p>
                 <p className="leading-6 flex items-center gap-2 px-2">
-                  {CalculatedTotal !== 1
-                    ? `£${CalculatedTotal} Total for ${
+                  {calculatedTotal !== 1
+                    ? `£${calculatedTotal} Total for ${
                         searchContent?.searchData?.noOfGuests || 1
                       } guests staying for ${
                         searchContent?.searchData?.numberOfDays
