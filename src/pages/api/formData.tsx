@@ -17,6 +17,18 @@ export default async function handler(
       email_id: string;
     }[] = [];
 
+    if (req.method === "POST") {
+      // Check if the file exists
+      try {
+        await fs.access("public/formData/CollectedFormData.json");
+      } catch {
+        // If the file doesn't exist, create it with an empty array
+        await fs.writeFile(
+          "public/formData/CollectedFormData.json",
+          JSON.stringify([])
+        );
+      }
+    }
     const fileContent = await fs.readFile(
       "public/formData/CollectedFormData.json",
       "utf-8"
