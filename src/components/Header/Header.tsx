@@ -141,6 +141,7 @@ const Header = () => {
   //for search input placeholder -> receiving from search page to sync the data on both places!
   const searchInputPlaceholder = useMemo(
     () =>
+      searchContext?.searchData !== null &&
       searchContext?.searchData?.location !== "" &&
       searchContext?.searchData?.range !== "" &&
       searchContext?.searchData?.noOfGuests !== ""
