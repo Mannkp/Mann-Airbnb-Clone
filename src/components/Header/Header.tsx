@@ -286,10 +286,16 @@ const Header = () => {
           </Link>
           <div className="flex text-2xl items-center gap-2 justify-evenly border-2 rounded-full px-2 py-1 lg:p-2 hover:shadow-md transition duration-150">
             <div
+              tabIndex={0}
               onClick={() => {
                 isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
               }}
-              aria-label="menu"
+              onKeyDown={(e) => {
+                if (e.key == "Enter") {
+                  setIsMenuOpen((prev) => !prev); // Toggle menu state on Enter key press
+                }
+              }}
+              aria-label="hamburger menu for mobile view"
             >
               <RxHamburgerMenu
                 className={
