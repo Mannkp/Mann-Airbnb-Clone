@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useRef, useContext } from "react";
 import { searchResult } from "@/pages/search";
 import { FaRegHeart, FaStar } from "react-icons/fa6";
 import { SearchContext } from "@/context/SearchContext/SearchContext";
@@ -7,7 +7,8 @@ import { SearchContext } from "@/context/SearchContext/SearchContext";
 const InfoCard = ({ data }: { data: searchResult }) => {
   const searchContent = useContext(SearchContext);
 
-  const CalculatedTotal =
+  const CalculatedTotal = useRef<number | null>(null);
+  CalculatedTotal.current =
     ((searchContent?.searchData?.numberOfDays &&
       searchContent?.searchData?.numberOfDays) ||
       1) * ((data?.price && parseInt(data?.price)) || 1);
@@ -72,8 +73,8 @@ const InfoCard = ({ data }: { data: searchResult }) => {
               {"£" + data?.price + " / night" || "£703 total"}
             </p>
             <p className="text-sm md:text-md">
-              {CalculatedTotal !== 1
-                ? `£${CalculatedTotal} total`
+              {CalculatedTotal.current !== 1
+                ? `£${CalculatedTotal.current} total`
                 : data?.total}
             </p>
           </div>

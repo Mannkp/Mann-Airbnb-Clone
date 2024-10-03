@@ -9,7 +9,13 @@ const icon = L.icon({
   iconAnchor: [20, 40],
 });
 
-const LeafletMap = ({ data }: { data: searchResult[] }) => {
+const LeafletMap = ({
+  data,
+  onSelect,
+}: {
+  data: searchResult[];
+  onSelect: (id: number) => void;
+}) => {
   return (
     <div className="flex-grow flex">
       <MapContainer
@@ -28,6 +34,7 @@ const LeafletMap = ({ data }: { data: searchResult[] }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {/* map through data and create markers */}
         {data &&
           data?.map((item: searchResult, index: number) => {
             return (
@@ -35,6 +42,11 @@ const LeafletMap = ({ data }: { data: searchResult[] }) => {
                 position={[item?.lat, item?.long] || [51.5421655, -0.0022275]}
                 icon={icon}
                 key={index + item?.title + index}
+                eventHandlers={{
+                  click: () => {
+                    onSelect(index);
+                  },
+                }}
               >
                 <Popup
                   area-label={"location marker of - " + item?.title}

@@ -26,6 +26,7 @@ const HeaderJson = {
 };
 
 const Header = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
   const [isSearchMenuOpen, setIsSearchMenuOpen] = useState<boolean>(false);
@@ -33,7 +34,6 @@ const Header = () => {
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [noOfGuests, setNoOfGuests] = useState<number>(1);
   const searchContext = useContext(SearchContext);
-  const router = useRouter();
   const searchMenuRef = useRef<HTMLInputElement>(null);
 
   // for Date-Range-Picker
@@ -70,7 +70,7 @@ const Header = () => {
     router.push({
       pathname: "/search",
       query: {
-        location: searchInput,
+        location: encodeURIComponent(searchInput),
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
         noOfGuests,

@@ -1,4 +1,12 @@
-import { createContext, useState, ReactNode } from "react";
+"use client";
+
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useCallback,
+} from "react";
 
 export interface SearchData {
   location: string | null;
@@ -17,12 +25,25 @@ export const SearchContext = createContext<SearchContextProps | null>(null);
 
 // Search context provider component
 export const SearchProvider = ({ children }: { children: ReactNode }) => {
-  const [searchData, setSearchData] = useState<SearchData | null>({
-    location: "",
-    range: "",
-    noOfGuests: "",
-    numberOfDays: 1,
-  });
+  //set data in context, if reading from session or null if fresh
+  const [searchData, setSearchData] = useState<SearchData | null>(null);
+
+  useEffect(() => {
+    const currentSearchData = sessionStorage.getItem("searchData");
+    currentSearchData
+      ? setSearchData(JSON.parse(currentSearchData))
+      : {
+          location: "",
+          range: "",
+          noOfGuests: "",
+          numberOfDays: 1,
+        };
+  }, []);
+
+  //if search data changes, set it to session storage
+  useEffect(() => {
+    sessionStorage.setItem("searchData", JSON.stringify(searchData));
+  }, [searchData]);
 
   return (
     <SearchContext.Provider value={{ searchData, setSearchData }}>
@@ -30,3 +51,6 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
     </SearchContext.Provider>
   );
 };
+
+// Session storage logic: session lasts till the tab is open, once tab is closed, session ends
+// so initially, session must be empty so getInitialState function will return object with empty values, now when user searches, state will be updated and same will be stored in session, so if user refreshes tab, session will persist and data will be retained! voila..

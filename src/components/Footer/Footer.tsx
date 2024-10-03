@@ -61,7 +61,7 @@ const Footer = () => {
                         return (
                           <li className="leading-6" key={index + data?.text}>
                             <Link
-                              href={data?.url || "#"}
+                              href={encodeURIComponent(data?.url) || "#"}
                               target={data?.target || "_self"}
                               className="text-gray-600 hover:text-gray-900 hover:shadow-sm"
                             >

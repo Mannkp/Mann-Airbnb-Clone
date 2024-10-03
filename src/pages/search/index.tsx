@@ -6,7 +6,14 @@ import InfoCard from "../../components/InfoCard/InfoCard";
 import { differenceInCalendarDays, format } from "date-fns";
 import SearchMockData from "../../data/mock_SearchResult.json";
 import { SearchContext } from "@/context/SearchContext/SearchContext";
-import { useState, useEffect, useContext, MouseEvent } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  MouseEvent,
+  useRef,
+} from "react";
 
 const LeafMap = dynamic(
   () => import("../../components/Leaflet Map/LeafletMap"),
@@ -44,13 +51,16 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
   const searchContext = useContext(SearchContext);
 
   const searchParams = useSearchParams();
-  const location = searchParams.get("location") || "";
+  const queryLocation = searchParams.get("location") || "";
+  const location = decodeURIComponent(queryLocation) || "";
   const startDate = searchParams.get("startDate") || "";
   const endDate = searchParams.get("endDate") || "";
   const noOfGuests = searchParams.get("noOfGuests") || "";
   const [numberOfDays, setNumberOfDays] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [filteredSearch, setFilteredSearch] = useState(searchResult);
+  const [selectedMarker, setSelectedMarker] = useState<number>(-1);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const formattedStartDate =
     (startDate && format(new Date(startDate), "dd MMM yyyy")) || "DD MMM YY";
@@ -79,9 +89,12 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
     }
   }, [range, noOfGuests, location, numberOfDays]);
 
-  const handleCategory = (e: MouseEvent<HTMLButtonElement>) => {
+  //set state for selected category
+  const handleCategory = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     setSelectedCategory(e.currentTarget.value);
-  };
+  }, []);
+
+  //filter logic
   useEffect(() => {
     if (selectedCategory.toLocaleLowerCase().includes("all")) {
       setFilteredSearch(searchResult);
@@ -93,6 +106,25 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
       );
     }
   }, [selectedCategory]);
+
+  // set the index of marker selected (from map)
+  const handleSelectedMarker = useCallback((id: number) => {
+    setSelectedMarker(id);
+  }, []);
+
+  //if marker selected, scroll respective card into center.
+  useEffect(() => {
+    if (
+      selectedMarker !== null &&
+      selectedMarker !== undefined &&
+      cardRefs.current[selectedMarker]
+    ) {
+      cardRefs?.current[selectedMarker]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [selectedMarker]);
 
   return (
     <>
@@ -107,6 +139,7 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
           "max-w-6xl mx-auto px-4 md:px-6 py-12 lg:py-20 flex gap-2 xl:gap-4 flex-col lg:flex-row"
         }
       >
+        {/* Search Page Logic, if searched item not present */}
         {location && !location.toLowerCase().includes("london") && (
           <>
             <div className="min-w-full">
@@ -120,6 +153,8 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
             </div>
           </>
         )}
+
+        {/* if searched location is london (as per static data we have) */}
         {location && location.toLowerCase().includes("london") && (
           <>
             <div className="searchContent min-w-[70%]">
@@ -133,6 +168,7 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
                 Stays in {location}
               </h1>
               <div className="flex flex-wrap gap-x-4 gap-y-2 mb-5 text-gray-800">
+                {/* category buttons and filters */}
                 {searchCategories &&
                   searchCategories?.Categories?.map(
                     (item: { id: number; category: string }, index: number) => {
@@ -153,15 +189,22 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
                 {filteredSearch.length} Search Results
               </p>
               <div className="infoCards flex flex-col max-w-full">
+                {/* display cards based on selected Filters */}
                 {searchResult &&
                   filteredSearch &&
                   filteredSearch?.map((item: searchResult, index: number) => {
                     return (
                       <Link
-                        href={`/search/${item?.title}`}
+                        href={`/search/${encodeURIComponent(item?.title)}`}
                         key={index + item?.star + item?.title}
                       >
-                        <InfoCard data={item} />
+                        <div
+                          ref={(el) => {
+                            cardRefs.current[index] = el;
+                          }}
+                        >
+                          <InfoCard data={item} />
+                        </div>
                       </Link>
                     );
                   })}
@@ -169,7 +212,12 @@ const SearchPage = ({ searchResult }: { searchResult: searchResults }) => {
             </div>
             <aside className="min-w-full lg:min-w-[30%]  flex">
               <div className="leafletMaps flex-grow flex">
-                {searchResult && <LeafMap data={searchResult} />}
+                {searchResult && filteredSearch && (
+                  <LeafMap
+                    data={filteredSearch}
+                    onSelect={handleSelectedMarker}
+                  />
+                )}
               </div>
             </aside>
           </>
