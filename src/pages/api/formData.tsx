@@ -11,7 +11,6 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   try {
-    
     const jsonData: {
       customerName: string;
       message: string;
@@ -19,7 +18,7 @@ export default async function handler(
     }[] = [];
 
     const fileContent = await fs.readFile(
-      "./src/data/CollectedFormData.json",
+      "public/formData/CollectedFormData.json",
       "utf-8"
     );
 
@@ -43,12 +42,11 @@ export default async function handler(
     //   console.log('File created!');
     // })
     await fs.writeFile(
-      "./src/data/CollectedFormData.json",
+      "public/formData/CollectedFormData.json",
       JSON.stringify(jsonData)
     );
 
     res.status(200).json({ message: "Form data recorded successfully!" });
-    
   } catch (error) {
     console.error("Error handling the file:", error);
     res

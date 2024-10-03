@@ -21,7 +21,7 @@ export default function ContactPage() {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     // Further steps: You can send this data to an API, display a message, etc.
     try {
-      const response = await fetch("/api/formData", {
+      const response = await fetch("api/formData", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

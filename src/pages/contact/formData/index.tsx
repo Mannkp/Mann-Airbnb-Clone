@@ -1,5 +1,5 @@
 import React from "react";
-import formData from "@/data/CollectedFormData.json";
+import formData from "../../../../public/formData/CollectedFormData.json";
 
 const FormDataPage = () => {
   return (
